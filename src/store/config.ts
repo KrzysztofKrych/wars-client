@@ -26,8 +26,6 @@ const rootReducer: Redux.Reducer<RootState, RootAction> = (store = rootInitialSt
 };
 
 
-
-
 export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 
 sagaMiddleware.run(userSaga);
