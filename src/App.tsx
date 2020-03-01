@@ -5,6 +5,7 @@ import { store } from './store/config';
 import ProfileSettings from './components/ProfileSettings/ProfileSettings';
 import { socket } from "./constants";
 import User from './models/User';
+import CryptoJS from 'crypto-js';
 
 function App() {
   socket.emit('join', {}, (error: unknown) => {
@@ -12,6 +13,11 @@ function App() {
   });
   socket.on('usersRetrived', (users: User[]) => {
     console.log(users);
+  });
+
+  socket.emit('login',  { email: "krzychu55561@wp.pl", password: CryptoJS.SHA256("qwerty1").toString() }, 
+  (callback: User) => {
+    console.log(callback);
   })
   return (
     <Provider store={store}>
