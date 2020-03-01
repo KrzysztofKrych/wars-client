@@ -2,13 +2,15 @@ import React from "react";
 import { RootState } from "../../store/config";
 import User from "../../models/User";
 import { connect } from "react-redux";
+import { socket } from "../../constants";
 
 
 export interface Props {
-    user: any;
+    user: User;
 }
 
 const ProfileSettings = ({user}: Props) => {
+    
     return (
         <div>{user.name}</div>
     )

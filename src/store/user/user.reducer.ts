@@ -9,7 +9,7 @@ export interface UserState {
 export type UserAction = UserNameChangeActionInit;
 
 export const userInitialState = {
-    name: ""
+    name: "Player"
 }
 
 const userReducer: Redux.Reducer<UserState, UserAction> = (state = userInitialState, action) => {
