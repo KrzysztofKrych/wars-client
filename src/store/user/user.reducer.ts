@@ -8,6 +8,7 @@ export interface UserState {
     experience: number;
     gold: number;
     email: string;
+    loggedIn: boolean;
 }
 
 export type UserAction = UserNameChangeActionInit;
@@ -17,7 +18,8 @@ export const userInitialState = {
     level: 1,
     experience: 0,
     gold: 0,
-    email: ""
+    email: "",
+    loggedIn: false
 }
 
 const userReducer: Redux.Reducer<UserState, UserAction> = (state = userInitialState, action) => {
