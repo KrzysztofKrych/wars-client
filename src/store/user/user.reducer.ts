@@ -1,6 +1,6 @@
 
 import Redux from "redux";
-import ActionType, { UserNameChangeActionInit } from "./user.actions";
+import ActionType, { UserNameChangeActionInit, UserLoginActionSuccess } from "./user.actions";
 
 export interface UserState {
     name: string;
@@ -11,7 +11,7 @@ export interface UserState {
     loggedIn: boolean;
 }
 
-export type UserAction = UserNameChangeActionInit;
+export type UserAction = UserNameChangeActionInit | UserLoginActionSuccess;
 
 export const userInitialState = {
     name: "Player",
@@ -27,6 +27,12 @@ const userReducer: Redux.Reducer<UserState, UserAction> = (state = userInitialSt
         case ActionType.USER_NAME_CHANGE_INIT_ACTION : {
             const { name } = action.payload;
             return { ...state, name }
+        }
+        case ActionType.USER_LOGIN_ACTION_SUCCESS: {
+            console.log(action)
+            return {
+                ...state
+            }
         }
         default: {
             return state;

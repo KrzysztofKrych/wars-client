@@ -1,8 +1,7 @@
 import React from 'react';
 import css from './App.module.scss';
-import { Provider, connect } from 'react-redux';
-import { store, RootState } from './store/config';
-import ProfileSettings from './components/ProfileSettings/ProfileSettings';
+import { Provider } from 'react-redux';
+import { store } from './store/config';
 import { socket } from "./constants";
 import User from './models/User';
 import CryptoJS from 'crypto-js';
