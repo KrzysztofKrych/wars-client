@@ -8,15 +8,10 @@ function* changeUserName(action: UserNameChangeActionInit){
 }
 
 function* login(action: UserLoginActionInit){
-   const response = yield call(loginAction, action.payload.email, action.payload.password, loginSuccessCallback);
+   const response = yield call(loginAction, action.payload.email, action.payload.password);
    if(response.name){
     yield put(new UserLoginActionSuccess(response))
    }
-}
-
-
-function* loginSuccessCallback (response: User) {
-    yield put(new UserLoginActionSuccess(response))
 }
 
 export default function* userSaga() {

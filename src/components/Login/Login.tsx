@@ -6,16 +6,17 @@ import Label from "../Elements/Label/Label";
 import { Dispatch } from "redux";
 import { UserLoginActionInit } from "../../store/user/user.actions";
 import { connect } from "react-redux";
+import CryptoJS from "crypto-js";
 
 export interface Props{
-    login: (email: string, password: string) => void
+    onLogin: (email: string, password: string) => void
 }
 
-const Login = ({login}: Props) => {
+const Login = ({onLogin}: Props) => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const handleLogin = () => {
-        login(email, password)
+        onLogin(email, CryptoJS.SHA256(password).toString())
     }
     return (
         <div className={css.Login}>
@@ -43,7 +44,7 @@ const Login = ({login}: Props) => {
 
 const map = {
     dispatch: (dispatch: Dispatch) => ({
-        login: (email: string, password: string) => {
+        onLogin: (email: string, password: string) => {
             dispatch(new UserLoginActionInit(email, password));
         }
     })

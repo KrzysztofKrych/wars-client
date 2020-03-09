@@ -1,25 +1,23 @@
 
 import Redux from "redux";
 import ActionType, { UserNameChangeActionInit, UserLoginActionSuccess } from "./user.actions";
+import User from "../../models/User";
 
 export interface UserState {
-    name: string;
-    level: number;
-    experience: number;
-    gold: number;
-    email: string;
-    loggedIn: boolean;
+    model: User;
 }
 
 export type UserAction = UserNameChangeActionInit | UserLoginActionSuccess;
 
 export const userInitialState = {
-    name: "Player",
-    level: 1,
-    experience: 0,
-    gold: 0,
-    email: "",
-    loggedIn: false
+    model: {
+        name: "Player",
+        level: 1,
+        experience: 0,
+        gold: 0,
+        email: "",
+        loggedIn: false
+    }
 }
 
 const userReducer: Redux.Reducer<UserState, UserAction> = (state = userInitialState, action) => {
@@ -29,9 +27,13 @@ const userReducer: Redux.Reducer<UserState, UserAction> = (state = userInitialSt
             return { ...state, name }
         }
         case ActionType.USER_LOGIN_ACTION_SUCCESS: {
-            console.log(action)
+            const { user } = action.payload;
             return {
-                ...state
+                ...state,
+                model: {
+                    ...user,
+                    loggedIn: true
+                }
             }
         }
         default: {
