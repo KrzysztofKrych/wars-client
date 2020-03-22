@@ -1,0 +1,11 @@
+.Label{
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    &.login{
+        margin: .5rem;
+        > * {
+            margin-bottom: .5rem;
+        }
+    }
+}

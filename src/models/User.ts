@@ -4,4 +4,5 @@ export default interface User {
     experience: number;
     level: number;
     gold: number;
+    loggedIn: boolean
 }

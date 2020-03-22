@@ -1,23 +1,23 @@
 
 import Redux from "redux";
-import ActionType, { UserNameChangeActionInit } from "./user.actions";
+import ActionType, { UserNameChangeActionInit, UserLoginActionSuccess } from "./user.actions";
+import User from "../../models/User";
 
 export interface UserState {
-    name: string;
-    level: number;
-    experience: number;
-    gold: number;
-    email: string;
+    model: User;
 }
 
-export type UserAction = UserNameChangeActionInit;
+export type UserAction = UserNameChangeActionInit | UserLoginActionSuccess;
 
 export const userInitialState = {
-    name: "Player",
-    level: 1,
-    experience: 0,
-    gold: 0,
-    email: ""
+    model: {
+        name: "Player",
+        level: 1,
+        experience: 0,
+        gold: 0,
+        email: "",
+        loggedIn: false
+    }
 }
 
 const userReducer: Redux.Reducer<UserState, UserAction> = (state = userInitialState, action) => {
@@ -25,6 +25,16 @@ const userReducer: Redux.Reducer<UserState, UserAction> = (state = userInitialSt
         case ActionType.USER_NAME_CHANGE_INIT_ACTION : {
             const { name } = action.payload;
             return { ...state, name }
+        }
+        case ActionType.USER_LOGIN_ACTION_SUCCESS: {
+            const { user } = action.payload;
+            return {
+                ...state,
+                model: {
+                    ...user,
+                    loggedIn: true
+                }
+            }
         }
         default: {
             return state;

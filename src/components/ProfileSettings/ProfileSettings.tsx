@@ -18,7 +18,7 @@ const ProfileSettings = ({user}: Props) => {
 const map = {
     state: (state: RootState) => {
         return {
-            user: state.user
+            user: state.user.model
         };
     },
 }
