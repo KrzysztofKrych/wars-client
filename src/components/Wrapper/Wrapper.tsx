@@ -6,6 +6,7 @@ import Login from "../Login/Login";
 import Auth from "../../models/Auth";
 import { Dispatch } from "redux";
 import { UserLoginActionInit } from "../../store/user/user.actions";
+import Content from "../Content/Content";
 
 export interface Props{
     user: User;
@@ -22,7 +23,7 @@ const Wrapper = ({user, token, onLogin}: Props) => {
   return (
     <Fragment>
       {user.loggedIn ?
-          <div>user loggedIn</div> :
+          <Content /> :
           <Login />
       }
     </Fragment>  

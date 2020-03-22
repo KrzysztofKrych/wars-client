@@ -1,5 +1,4 @@
 import { socket } from "../../constants";
-import CryptoJS from "crypto-js";
 import User from "../../models/User";
 
 const loginAction = async (email: string, password: string) => {
