@@ -1,0 +1,19 @@
+.Menu{
+    height: 100vh;
+    width: 15vw;
+    border-right: 2px solid #CCC;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfefe;
+    text-align: center;
+    li{
+        color: #969c9e;
+        padding: 1rem;
+        cursor: pointer;
+        &:hover{
+            color: #858b8d;
+            background-color: #eceded;
+        }
+    }
+}
