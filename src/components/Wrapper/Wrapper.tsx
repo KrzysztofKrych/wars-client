@@ -19,7 +19,8 @@ const Wrapper = ({user, token, onLogin}: Props) => {
     if(token && !user.loggedIn){
       onLogin(token.email, token.password);
     }
-  }, [])
+  }, []);
+  
   return (
     <Fragment>
       {user.loggedIn ?
